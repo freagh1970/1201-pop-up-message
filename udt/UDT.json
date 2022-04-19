@@ -1,0 +1,1254 @@
+{
+  "tags": [
+    {
+      "name": "Alarms",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "alarms",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "alarms",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Float4",
+                  "historyProvider": "Ignition_main",
+                  "name": "volume",
+                  "historyEnabled": true,
+                  "value": 0.0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "historyProvider": "Ignition_main",
+                  "name": "alarm_no",
+                  "historyEnabled": true,
+                  "value": 1876,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "Map_location",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "Line_one",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "historyProvider": "Ignition_main",
+                  "name": "alarm",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "Line_two",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "historyProvider": "Ignition_main",
+                  "name": "monitor",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PopUp_Alarms",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "State",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "Alarm",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Int2",
+              "name": "Volume",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "system",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "R_bits",
+              "parameters": {
+                "trigger": {
+                  "dataType": "String"
+                },
+                "Bit": {
+                  "dataType": "Integer"
+                },
+                "Alarm_no": {
+                  "dataType": "Integer"
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "alarm",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "expression": "[site_01]SampleData/Alarms/alarm{Alarm_no}/alarm",
+                  "dataType": "String",
+                  "name": "alarm_no",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "opcItemPath": {
+                    "bindType": "parameter",
+                    "binding": "ns\u003d2;s\u003d05_Superior_Court_N.SEC_N.R03000.{bit}"
+                  },
+                  "valueSource": "opc",
+                  "eventScripts": [
+                    {
+                      "eventid": "valueChanged",
+                      "script": "\t#Variables\n\talarm_no \u003d \"[.]alarm_no\"\n\t#state \u003d \"[.]trigger\"\n\t\t\n\t\t\n\t# CONSTANT\n\tcurr \u003d currentValue\t\n\tstate \u003d curr.value\t\n\tvalue \u003d1\n\t\t\n\t# logic \n\t\n\tif curr_value \u003d\u003d False:\n\t\tsystem.tag.writeBlocking([alarm_no], [value])\t"
+                    }
+                  ],
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "tagType": "AtomicTag",
+                  "opcServer": "KEPServerEX/UA@DBSMNQ53"
+                },
+                {
+                  "value": {
+                    "bindType": "parameter",
+                    "binding": "{trigger}"
+                  },
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "trigger",
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "alarms_bka",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "historyProvider": "Ignition_main",
+              "name": "sound",
+              "historyEnabled": true,
+              "value": "empty",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "historyProvider": "Ignition_main",
+              "name": "alarm",
+              "historyEnabled": true,
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "historyProvider": "Ignition_main",
+              "name": "monitor",
+              "historyEnabled": true,
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "historyProvider": "Ignition_main",
+              "name": "volume",
+              "historyEnabled": true,
+              "value": 0.0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "historyProvider": "Ignition_main",
+              "name": "alarm_no",
+              "historyEnabled": true,
+              "value": 1876,
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "alarms_popup",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "alarm_location",
+              "value": "\"\"",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "name": "alarm_number",
+              "value": 0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "name": "alarm_volume",
+              "value": 0.0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "alarm_tag",
+              "value": false,
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "cctv",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "label",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "device",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "State",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "bcis",
+              "value": "",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "alarms_01",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Line_one",
+              "value": "empty",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "historyProvider": "Ignition_main",
+              "name": "alarm_no",
+              "historyEnabled": true,
+              "value": 1876,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "historyProvider": "Ignition_main",
+              "name": "alarm",
+              "historyEnabled": true,
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Map_location",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "historyProvider": "Ignition_main",
+              "name": "volume",
+              "historyEnabled": true,
+              "value": 0.0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "historyProvider": "Ignition_main",
+              "name": "monitor",
+              "historyEnabled": true,
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Line_two",
+              "value": "empty",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "alarm_door_held",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "name": "alarm_no",
+              "value": 0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "alarm",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "status",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Float4",
+              "name": "volume",
+              "value": 0.0,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "state",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "link",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "word_bit",
+          "typeId": "",
+          "parameters": {
+            "tag": {
+              "dataType": "String"
+            }
+          },
+          "tagType": "UdtType"
+        },
+        {
+          "name": "alarms 1",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "alarm_popup",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "name": "ALARM_NO",
+                  "value": 0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "TAG",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "Alarm",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "VOLUME",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Building",
+      "tagType": "Folder"
+    },
+    {
+      "name": "Devices",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Duress",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "duress",
+              "parameters": {
+                "alarm number": {
+                  "dataType": "Integer"
+                },
+                "alarm path": {
+                  "dataType": "String"
+                },
+                "device": {
+                  "dataType": "String"
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "reset",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "visable",
+                  "historyEnabled": true,
+                  "value": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "expr",
+                  "expression": "{device}",
+                  "dataType": "String",
+                  "name": "label",
+                  "historyEnabled": true,
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "expr",
+                  "expression": "{alarm number}",
+                  "dataType": "Int4",
+                  "name": "alarm",
+                  "historyEnabled": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "eventScripts": [
+                    {
+                      "eventid": "valueChanged",
+                      "script": "\t#Variables\n\t\t\n\tparamValue \u003d tag[\u0027parameters\u0027][\u0027alarm path\u0027]\n\t\t\n\t# Constants\n\tvalue \u003d 1\n\tcur \u003d currentValue\n\tstate \u003d cur.value\n\t# Logic \n\tif state \u003d\u003d True:\n\t\tsystem.tag.writeBlocking([paramValue], [value])\n\t\t\n\telif state \u003d\u003d False:\n\t\tsystem.tag.writeBlocking([paramValue], 0)\t"
+                    }
+                  ],
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Elevator",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "elevator_floors",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "door_status",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "bit_status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "label_text",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "bit_state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "door_visable",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "bit_visable",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            },
+            {
+              "name": "elevator",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "floor_door_state",
+                  "value": [
+                    false,
+                    true,
+                    true,
+                    true,
+                    true,
+                    false,
+                    true,
+                    true
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "duress_label",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "duress_state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "elevator_no",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "elevator_door_open",
+                  "value": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "elevator_release_label",
+                  "value": " RELEASE ELEVATOR ",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "elevator_release_status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "floor_door_no",
+                  "value": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "floor_door_status",
+                  "value": [
+                    true,
+                    false,
+                    false,
+                    false,
+                    true,
+                    false,
+                    true,
+                    true
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "duress_status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "elevator_door_number",
+                  "value": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "elevator_release",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "elevator_door_floor",
+                  "value": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ],
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "elevator_door_status",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "duress_reset",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CCTV",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "CCTV",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "button_status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "button_state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "value": {
+                    "bindType": "parameter",
+                    "binding": "{InstanceName}"
+                  },
+                  "valueSource": "memory",
+                  "name": "device_number",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "button_visable",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Doors",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "door _held",
+              "parameters": {
+                "alarm number": {
+                  "dataType": "Integer"
+                },
+                "alarm path": {
+                  "dataType": "String"
+                },
+                "device": {
+                  "dataType": "String"
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "visable",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "alarm",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "expr",
+                  "expression": "{device}",
+                  "dataType": "String",
+                  "name": "label",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                }
+              ]
+            },
+            {
+              "name": "door",
+              "parameters": {
+                "alarm number": {
+                  "dataType": "Integer"
+                },
+                "alarm path": {
+                  "dataType": "String"
+                },
+                "device": {
+                  "dataType": "String"
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "expr",
+                  "expression": "{alarm number}",
+                  "dataType": "Int4",
+                  "name": "alarm",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "expr",
+                  "expression": "{device}",
+                  "dataType": "String",
+                  "name": "label",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "eventScripts": [
+                    {
+                      "eventid": "valueChanged",
+                      "script": "\t#Variables\n\t\t\n\tparamValue \u003d tag[\u0027parameters\u0027][\u0027alarm path\u0027]\n\t\t\n\t# Constants\n\tvalue \u003d 1\n\tcur \u003d currentValue\n\tstate \u003d cur.value\n\t# Logic \n\tif state \u003d\u003d True:\n\t\tsystem.tag.writeBlocking([paramValue], [value])\n\t\t\n\telif state \u003d\u003d False:\n\t\tsystem.tag.writeBlocking([paramValue], 0)\t"
+                    }
+                  ],
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "visable",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            },
+            {
+              "name": "door_breach",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "alarm_address",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "visable",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "alarm_no",
+                  "value": 0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "datasource": "Site_01",
+                  "name": "RGB",
+                  "value": "111",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Intercom",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Intercom",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "call_active",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "button_state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "call_request",
+                  "value": 0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "button_label ",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "button_status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "device_no",
+                  "value": 1588,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Systems",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Screen",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "popupmessage",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "alarm",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Float4",
+                  "name": "volume",
+                  "value": 0.0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "alarm_no",
+                  "value": 0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Engineering",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Engineering",
+              "parameters": {
+                "device": {
+                  "dataType": "Integer"
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "historyProvider": "Ignition_main",
+                  "name": "monitor",
+                  "historyEnabled": true,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "line_two",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "historyProvider": "Ignition_main",
+                  "name": "alarm_no",
+                  "historyEnabled": true,
+                  "value": 1876,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "line_one",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "historyProvider": "Site_01",
+                  "alarms": [
+                    {
+                      "setpointA": 1.0,
+                      "name": "Alarm",
+                      "displayPath": "",
+                      "label": {
+                        "bindType": "Expression",
+                        "value": "{[.]line_one} "
+                      }
+                    }
+                  ],
+                  "name": "alarm",
+                  "historyEnabled": true,
+                  "alarmEvalEnabled": false,
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "map_location",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Float4",
+                  "historyProvider": "Ignition_main",
+                  "name": "volume",
+                  "historyEnabled": true,
+                  "value": 0.0,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            },
+            {
+              "name": "Convert",
+              "parameters": {
+                "counter": {
+                  "dataType": "Integer",
+                  "value": 0
+                }
+              },
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "BooleanArray",
+                  "name": "New Tag",
+                  "value": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ],
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Basic",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Button",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "dataType": "String",
+                  "name": "label",
+                  "value": "empty",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "alarm",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "state",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "status",
+                  "value": false,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Boolean",
+                  "name": "visable",
+                  "value": true,
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Colors",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Color",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "valueSource": "memory",
+                  "name": "code_no",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "color_button",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Text",
+                  "name": "RGB",
+                  "value": "0",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "ID",
+                  "value": 0,
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "dataType": "Text",
+                  "name": "name",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "valueSource": "memory",
+                  "name": "color_text",
+                  "tagType": "AtomicTag"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

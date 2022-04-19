@@ -1,0 +1,40 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 10,
+    "cacheEnabled": false,
+    "database": "Site_01",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "24d79ba15ba878bbcf8b02a257d86a661c2a7ca1b21fdc79e26aae704e439fad",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "Engineering",
+      "timestamp": "2022-04-19T18:35:54Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "Alarm_No",
+        "sqlType": 3
+      }
+    ]
+  }
+}
