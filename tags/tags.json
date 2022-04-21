@@ -2,43 +2,7 @@
   "tags": [
     {
       "name": "Alarms",
-      "tagType": "Folder",
-      "tags": [
-        {
-          "name": "Statecourt",
-          "tagType": "Folder"
-        },
-        {
-          "name": "alarm_1875",
-          "typeId": "Alarms/alarms_popup",
-          "tagType": "UdtInstance",
-          "tags": [
-            {
-              "value": 1875,
-              "name": "alarm_number",
-              "tagType": "AtomicTag"
-            },
-            {
-              "name": "alarm_volume",
-              "tagType": "AtomicTag"
-            },
-            {
-              "name": "alarm_location",
-              "tagType": "AtomicTag"
-            },
-            {
-              "name": "alarm_tag",
-              "tagType": "AtomicTag"
-            }
-          ]
-        },
-        {
-          "valueSource": "memory",
-          "dataType": "Boolean",
-          "name": "Kepware",
-          "tagType": "AtomicTag"
-        }
-      ]
+      "tagType": "Folder"
     },
     {
       "name": "Buildings",
@@ -4021,10 +3985,12 @@
                   "tagType": "AtomicTag"
                 },
                 {
+                  "value": false,
                   "name": "alarm",
                   "tagType": "AtomicTag"
                 },
                 {
+                  "value": 0.0,
                   "name": "volume",
                   "tagType": "AtomicTag"
                 },
@@ -4243,6 +4209,33 @@
                           "tagType": "AtomicTag"
                         }
                       ]
+                    },
+                    {
+                      "name": "1987",
+                      "typeId": "Systems/Basic/button",
+                      "tagType": "UdtInstance",
+                      "tags": [
+                        {
+                          "name": "status",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "visable",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "state",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "label",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "AtomicTag"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -4391,23 +4384,28 @@
                   "tagType": "UdtInstance",
                   "tags": [
                     {
+                      "historyProvider": "Site_01",
                       "name": "reset",
                       "tagType": "AtomicTag"
                     },
                     {
+                      "historyProvider": "Site_01",
                       "value": true,
                       "name": "status",
                       "tagType": "AtomicTag"
                     },
                     {
+                      "historyProvider": "Site_01",
                       "name": "alarm",
                       "tagType": "AtomicTag"
                     },
                     {
+                      "historyProvider": "Site_01",
                       "name": "label",
                       "tagType": "AtomicTag"
                     },
                     {
+                      "historyProvider": "Site_01",
                       "value": true,
                       "name": "visable",
                       "tagType": "AtomicTag"
@@ -4416,7 +4414,18 @@
                       "eventScripts": [
                         {
                           "eventid": "valueChanged",
-                          "script": "\t\n\n\tparamValue \u003d \"[site_01]SampleData/Alarms/alarm1875/alarm\"\n\t\t\n\t# Constants\n\tvalue \u003d 1\n\tcur \u003d currentValue\n\tstate \u003d cur.value\n\t# Logic \n\tif state \u003d\u003d True:\n\t\tsystem.tag.writeBlocking([paramValue], [value])\t\t"
+                          "script": "\timport time\n\n\talarm \u003d \"[site_01]SampleData/Alarms/alarm1875/alarm\"\n\tvolume \u003d \"[site_01]SampleData/Alarms/alarm1875/volume\"\t\n\tdelay \u003d 20\n\t# Constants\n\t\n\tcur \u003d currentValue\n\tstate \u003d cur.value\n\t\n\t# Logic \t\n\ttime.sleep(delay)\n\t\n\tif state \u003d\u003d 0:\n\t\tvalue \u003d 1\n\t\tsystem.tag.writeBlocking([alarm],[value])\n#\t\tsystem.tag.writeBlocking([volume],[value])\t\t\n\t\t\n\telif state \u003d\u003d 1:\n\t\tvalue \u003d 0\n\t\tsystem.tag.writeBlocking([alarm], [value])\t\n\t\t\n\telse:\n\t\tvalue \u003d 0\n\t\tsystem.tag.writeBlocking([alarm], [value])\n\t\t\t"
+                        }
+                      ],
+                      "historyProvider": "Site_01",
+                      "alarms": [
+                        {
+                          "setpointA": 1.0,
+                          "name": "Door open to long - 1600",
+                          "label": "Door open to long - 1600",
+                          "priority": "Critical",
+                          "displayPath": "Door open to long - 1600",
+                          "ackMode": "Auto"
                         }
                       ],
                       "value": false,
@@ -4820,39 +4829,6 @@
                     },
                     {
                       "name": "button_status",
-                      "tagType": "AtomicTag"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Breach",
-              "tagType": "Folder",
-              "tags": [
-                {
-                  "name": "1987",
-                  "typeId": "Systems/Basic/button",
-                  "tagType": "UdtInstance",
-                  "tags": [
-                    {
-                      "name": "label",
-                      "tagType": "AtomicTag"
-                    },
-                    {
-                      "name": "state",
-                      "tagType": "AtomicTag"
-                    },
-                    {
-                      "name": "status",
-                      "tagType": "AtomicTag"
-                    },
-                    {
-                      "name": "alarm",
-                      "tagType": "AtomicTag"
-                    },
-                    {
-                      "name": "visable",
                       "tagType": "AtomicTag"
                     }
                   ]

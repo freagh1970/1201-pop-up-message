@@ -10,10 +10,9 @@
   "attributes": {
     "lastModification": {
       "actor": "Engineering",
-      "timestamp": "2022-04-21T15:32:53Z"
+      "timestamp": "2022-04-21T15:22:53Z"
     },
     "xml-format-version": 1,
-    "open-on-start": true,
-    "lastModificationSignature": "63ccb69de65f3d7bae082c564c6b0dcee7276f4568ce2c25fc9ae16bc936dd6e"
+    "lastModificationSignature": "a2f1c0c47d1714f6b39fabde2f10425392ec925d084f9171e99933d6ad00b28d"
   }
 }
